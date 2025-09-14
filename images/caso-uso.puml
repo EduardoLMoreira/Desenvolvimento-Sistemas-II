@@ -1,0 +1,55 @@
+@startuml
+left to right direction
+actor Cliente
+actor Atendente
+actor Mecanico as "Mecânico"
+actor Chefe as "Chefe de Oficina"
+actor Almoxarife
+actor Financeiro
+actor Fornecedor
+actor Admin as "Admin/TI"
+actor Pagamentos as "Sistema de Pagamentos"
+
+rectangle "SCMV - Oficina Mecânica" {
+  usecase UC01 as "Agendar serviço"
+  usecase UC02 as "Check-in do veículo"
+  usecase UC03 as "Gerar orçamento"
+  usecase UC04 as "Aprovar orçamento"
+  usecase UC05 as "Emitir OS"
+  usecase UC06 as "Registrar serviços"
+  usecase UC07 as "Solicitar/Atender peças"
+  usecase UC08 as "Atualizar status"
+  usecase UC09 as "Notificar cliente"
+  usecase UC10 as "Faturar/Receber pagamento"
+  usecase UC11 as "Entregar veículo"
+  usecase UC12 as "Relatórios"
+  usecase UC13 as "Consultar histórico"
+  usecase UC14 as "Manter estoque"
+  usecase UC16 as "Gerenciar usuários"
+  usecase UC17 as "Parametrizar sistema"
+}
+
+Cliente --> UC01
+Atendente --> UC01
+Atendente --> UC02
+Atendente --> UC03
+Cliente --> UC04
+UC04 --> UC05 : <<include>>
+Chefe --> UC05
+Mecânico --> UC06
+Mecânico --> UC07
+Mecânico --> UC08
+Almoxarife --> UC07
+Atendente --> UC08
+Atendente --> UC09
+Cliente --> UC10
+Atendente --> UC10
+Pagamentos --> UC10
+Cliente --> UC11
+Chefe --> UC12
+Financeiro --> UC12
+Cliente --> UC13
+Almoxarife --> UC14
+Admin --> UC16
+Admin --> UC17
+@enduml
